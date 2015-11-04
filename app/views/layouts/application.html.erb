@@ -10,6 +10,7 @@
 <%= yield %>
 <% if user_signed_in? %>  
 <h3>Hello, <%= current_user.email %>!</h3>
+<h3><%= current_user.name %>!</h3>
 <%= link_to "Log out", destroy_user_session_path, method: :delete %> 
 <%= link_to "User log", userlogs_path %>
 <% else %>
@@ -18,6 +19,12 @@
 <%= link_to "Sign out", new_user_registration_path  %> 
 <%  end %>
 
+<hr>
+<% flash.each do |type, message| %>
+<strong><%=message %></strong>
+<% end %>
+
+<br>
 
 </body>
 </html>
